@@ -11,7 +11,7 @@ int main() {
     printf("1. Iniciar Jogo\n");
     printf("2. Ver Regras\n");
     printf("3. Sair\n");
-    printf("Escolha uma opçao: ");
+    printf("Escolha uma opcao: ");
     scanf("%d", &opcao);
   
     switch (opcao) {
@@ -104,86 +104,227 @@ int main() {
         printf("---------------------------------------------------------------------------\n");
 
         //verificações
-        printf("Sera escolhido um desses atributos para comparar: \n 1 - populacao\n 2 - area\n 3 - pib\n 4 - pontos turisticos\n 5 - densidade populaciona\n 6 - pib per capito\n 7 - super poder\n");
-        int escolha = rand() % 7 + 1;
+        printf("Sera escolhido dois desses atributos para comparar: \n 1 - populacao\n 2 - area\n 3 - pib\n 4 - pontos turisticos\n 5 - densidade populaciona\n 6 - pib per capito\n 7 - super poder\n");
+        int escolha1 = rand() % 7 + 1; 
+        int escolha2 = rand() % 7 + 1;
+        escolha2 = (escolha1 == escolha2 && escolha1 != 7) ? escolha2 + 1 : escolha2;
+        escolha2 = (escolha1 == escolha2 && escolha1 == 7) ? escolha2 - 1 : escolha2;
         printf("----------------------------------------------------------------------------\n");
-        printf("O atributo escolhido foi: %d\n",escolha);
+        printf("O atributo escolhido foi: %d e %d\n",escolha1,escolha2);
+
         //resultados
-        switch (escolha)
+        int resultado1, resultado2;
+        printf("----------------------------------------------------------------------------\n");
+        printf("primiera comparacao\n");
+        
+        //primeira opção
+        switch (escolha1)
         {
         case 1:
             printf("A populacao da cidade %s e: %d e a populacao da cidade %s e: %d\n",nome1,populacao1,nome2,populacao2);
             if(populacao1 > populacao2){
-                printf("A populacao da %s e maior que a populacao da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("A populacao da %s e maior que a populacao da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(populacao1 == populacao2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("A populacao da %s e maior que a populacao da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("A populacao da %s e maior que a populacao da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         case 2:
             printf("A area da cidade %s e: %.2f e a area da cidade %s e: %.2f\n",nome1,area1,nome2,area2);
             if(area1 > area2){
-                printf("A area da %s e maior que a area da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("A area da %s e maior que a area da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(area1 == area2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("A area da %s e maior que a area da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("A area da %s e maior que a area da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         case 3:
             printf("O pib da cidade %s e: %.2f e o pib da cidade %s e: %.2f\n",nome1,pib1,nome2,pib2);
             if(pib1 > pib2){
-                printf("O pib da %s e maior que o pib da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("O pib da %s e maior que o pib da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(pib1 == pib2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("O pib da %s e maior que o pib da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("O pib da %s e maior que o pib da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         case 4:
             printf("Os pontos turisticos da cidade %s e: %d e os pontos turisticos da cidade %s e: %d\n",nome1,pontosTuristicos1,nome2,pontosTuristicos2);
             if(pontosTuristicos1 > pontosTuristicos2){
-                printf("OS pontos turisticos da %s e maior que os pontos turisticos da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("OS pontos turisticos da %s e maior que os pontos turisticos da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(pontosTuristicos1 == pontosTuristicos2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("OS pontos turisticos da %s e maior que os pontos turisticos da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("OS pontos turisticos da %s e maior que os pontos turisticos da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         case 5:
             printf("A densidade populacional da cidade %s e: %.2f a densidade populacional da cidade %s e: %.2f\n",nome1,densidadePopulacional1,nome2,densidadePopulacional2);
             if(densidadePopulacional1 < densidadePopulacional2){
-                printf("A densidade populacional da %s e maior que a densidade populacional da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("A densidade populacional da %s e maior que a densidade populacional da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(densidadePopulacional1 == densidadePopulacional2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("A densidade populacional da %s e maior que a densidade populacional da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("A densidade populacional da %s e maior que a densidade populacional da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         case 6:
             printf("O pib per capto da cidade %s e: %.2f e o pib per capto da cidade %s e: %.2f\n",nome1,pibPercapto1,nome2,pibPercapto2);
             if(pibPercapto1 > pibPercapto2){
-                printf("O pib per capto da %s e maior que o pib  per capto da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("O pib per capto da %s e maior que o pib  per capto da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(pibPercapto1 == pibPercapto2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("O pib per capto da %s e maior que o pib per capto da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("O pib per capto da %s e maior que o pib per capto da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         case 7:
             printf("O super poder da cidade %s e: %.2f e o super poder da cidade %s e: %.2f\n",nome1,superPoder1,nome2,superPoder2);
             if(superPoder1 > superPoder2){
-                printf("O super poder da %s e maior que o super poder da cidade %s\n A vencedora e: %s",nome1,nome2,nome1);
+                printf("O super poder da %s e maior que o super poder da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado1 = 1;
             }else if(superPoder1 == superPoder2){
                 printf("Empate");
+                resultado1 = 0;
             }else{
-                printf("O super poder da %s e maior que o super poder da cidade %s\n A vencedora e: %s",nome2,nome1,nome2);
+                printf("O super poder da %s e maior que o super poder da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado1 = 2;
             }
             break;
         default:
+            printf("Opcao invalida");
             break;
         }
+        printf("----------------------------------------------------------------------------------------\n");
+        printf("Segunda comparacao\n");
+        //segunda opção
+        switch (escolha2)
+        {
+        case 1:
+            printf("A populacao da cidade %s e: %d e a populacao da cidade %s e: %d\n",nome1,populacao1,nome2,populacao2);
+            if(populacao1 > populacao2){
+                printf("A populacao da %s e maior que a populacao da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(populacao1 == populacao2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("A populacao da %s e maior que a populacao da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        case 2:
+            printf("A area da cidade %s e: %.2f e a area da cidade %s e: %.2f\n",nome1,area1,nome2,area2);
+            if(area1 > area2){
+                printf("A area da %s e maior que a area da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(area1 == area2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("A area da %s e maior que a area da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        case 3:
+            printf("O pib da cidade %s e: %.2f e o pib da cidade %s e: %.2f\n",nome1,pib1,nome2,pib2);
+            if(pib1 > pib2){
+                printf("O pib da %s e maior que o pib da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(pib1 == pib2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("O pib da %s e maior que o pib da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        case 4:
+            printf("Os pontos turisticos da cidade %s e: %d e os pontos turisticos da cidade %s e: %d\n",nome1,pontosTuristicos1,nome2,pontosTuristicos2);
+            if(pontosTuristicos1 > pontosTuristicos2){
+                printf("OS pontos turisticos da %s e maior que os pontos turisticos da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(pontosTuristicos1 == pontosTuristicos2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("OS pontos turisticos da %s e maior que os pontos turisticos da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        case 5:
+            printf("A densidade populacional da cidade %s e: %.2f a densidade populacional da cidade %s e: %.2f\n",nome1,densidadePopulacional1,nome2,densidadePopulacional2);
+            if(densidadePopulacional1 < densidadePopulacional2){
+                printf("A densidade populacional da %s e maior que a densidade populacional da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(densidadePopulacional1 == densidadePopulacional2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("A densidade populacional da %s e maior que a densidade populacional da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        case 6:
+            printf("O pib per capto da cidade %s e: %.2f e o pib per capto da cidade %s e: %.2f\n",nome1,pibPercapto1,nome2,pibPercapto2);
+            if(pibPercapto1 > pibPercapto2){
+                printf("O pib per capto da %s e maior que o pib  per capto da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(pibPercapto1 == pibPercapto2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("O pib per capto da %s e maior que o pib per capto da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        case 7:
+            printf("O super poder da cidade %s e: %.2f e o super poder da cidade %s e: %.2f\n",nome1,superPoder1,nome2,superPoder2);
+            if(superPoder1 > superPoder2){
+                printf("O super poder da %s e maior que o super poder da cidade %s\n A vencedora e: %s\n",nome1,nome2,nome1);
+                resultado2 = 1;
+            }else if(superPoder1 == superPoder2){
+                printf("Empate");
+                resultado2 = 0;
+            }else{
+                printf("O super poder da %s e maior que o super poder da cidade %s\n A vencedora e: %s\n",nome2,nome1,nome2);
+                resultado2 = 2;
+            }
+            break;
+        default:
+            printf("Opcao invalida");
+            break;
+        }
+        printf("--------------------------------------------------------------\n");
+        printf("Os resultados foram: %d e %d\n",resultado1,resultado2);
+        if(resultado1 == 1 && (resultado2 == 0 || resultado2 == 1) ){
+            printf("A cidade %s foi a vencedora!",nome1);
+        }else if((resultado1 == 0 && resultado2 == 0) || (resultado1 == 1 && resultado2 == 2)){
+            printf("Deu empate!");
+        }else{
+            printf("A cidade %s foi a vencedora",nome2);
+        }
+
         break;
       case 2:
         printf("Regras do Jogo:\n");
